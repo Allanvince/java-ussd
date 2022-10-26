@@ -6,14 +6,14 @@ public class AtmOperationImpl implements AtmOperationInterf{
     Map<Double, String> mini_state = new HashMap<>();
     @Override
     public void viewBalance() {
-        System.out.println("Your balance is: ");
-        viewBalance();
+        System.out.println("Your balance is: "+ atm.getBalance());
+
     }
 
     @Override
     public void depositAmount(double depositAmount) {
         //Stores the information on the Hashmap
-        mini_state.put(depositAmount, "was deposited");
+        mini_state.put(depositAmount, " was deposited");
         atm.setBalance(atm.getBalance() + depositAmount);
         viewBalance();
     }
@@ -21,7 +21,7 @@ public class AtmOperationImpl implements AtmOperationInterf{
     @Override
     public void withdrawAmount(double withdrawAmount) {
         //Stores the information on the Hashmap
-        mini_state.put(withdrawAmount, "was withdrawn");
+        mini_state.put(withdrawAmount, " was withdrawn");
         // checking if there are enough funds to be withdrawn
         if (atm.getBalance() >=withdrawAmount){
             atm.setBalance(atm.getBalance()- withdrawAmount);
@@ -36,7 +36,7 @@ public class AtmOperationImpl implements AtmOperationInterf{
     public void viewMini_statement() {
         for (Map.Entry<Double,String> mini:mini_state.entrySet()){
             //displays both the value and string message
-            System.out.print(mini.getKey() + mini.getValue());
+            System.out.println(mini.getKey() + mini.getValue());
         }
     }
 }
